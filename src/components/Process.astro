@@ -1,0 +1,214 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+
+const stepIcons = [
+  '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 16v-4m0-4h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  '<rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="1.5"/>',
+  '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+  '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+];
+---
+
+<section class="section" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="overline" data-es={d.process.overline} data-en={en.process.overline}>{d.process.overline}</span>
+      <h2 class="section-title" data-es={d.process.title} data-en={en.process.title}>{d.process.title}</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line">
+        <div class="timeline-progress" id="timeline-progress"></div>
+      </div>
+
+      {d.process.steps.map((step, i) => {
+        const enStep = en.process.steps[i];
+        return (
+          <div class={`timeline-step reveal reveal-delay-${i + 1}`} data-step={i}>
+            <div class="step-marker">
+              <div class="step-number">{(i + 1).toString().padStart(2, '0')}</div>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" set:html={stepIcons[i]} />
+              </div>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title" data-es={step.title} data-en={enStep.title}>{step.title}</h3>
+              <p class="step-description" data-es={step.description} data-en={enStep.description}>{step.description}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-header {
+    text-align: center;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 80px;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 35px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-subtle);
+  }
+
+  .timeline-progress {
+    width: 100%;
+    height: 0%;
+    background: var(--gradient-brand);
+    transition: height 0.1s linear;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .timeline-step {
+    position: relative;
+    padding-bottom: 64px;
+  }
+
+  .timeline-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .step-marker {
+    position: absolute;
+    left: -80px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all var(--transition);
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-step.active .step-icon {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+    box-shadow: 0 0 24px var(--accent-glow);
+  }
+
+  .step-content {
+    padding-top: 8px;
+  }
+
+  .step-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .step-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .timeline {
+      padding-left: 60px;
+    }
+
+    .step-marker {
+      left: -60px;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .step-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .timeline-line {
+      left: 25px;
+    }
+  }
+</style>
+
+<script>
+  function initTimeline() {
+    const timeline = document.querySelector('.timeline') as HTMLElement;
+    const progress = document.getElementById('timeline-progress') as HTMLElement;
+    const steps = document.querySelectorAll('.timeline-step');
+    if (!timeline || !progress) return;
+
+    const observer = new IntersectionObserver(
+      () => {
+        const rect = timeline.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        const totalH = rect.height;
+        const scrolled = windowH - rect.top;
+        const pct = Math.min(Math.max(scrolled / totalH, 0), 1);
+        progress.style.height = `${pct * 100}%`;
+
+        steps.forEach((step, i) => {
+          const stepRect = step.getBoundingClientRect();
+          const stepMid = stepRect.top + stepRect.height / 2;
+          step.classList.toggle('active', stepMid < windowH * 0.65);
+        });
+      },
+      { threshold: Array.from({ length: 100 }, (_, i) => i / 100) }
+    );
+
+    observer.observe(timeline);
+
+    window.addEventListener('scroll', () => {
+      const rect = timeline.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const totalH = rect.height;
+      const scrolled = windowH - rect.top;
+      const pct = Math.min(Math.max(scrolled / totalH, 0), 1);
+      progress.style.height = `${pct * 100}%`;
+
+      steps.forEach((step) => {
+        const stepRect = step.getBoundingClientRect();
+        const stepMid = stepRect.top + stepRect.height / 2;
+        step.classList.toggle('active', stepMid < windowH * 0.65);
+      });
+    });
+  }
+
+  initTimeline();
+</script>

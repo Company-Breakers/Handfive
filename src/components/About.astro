@@ -1,0 +1,204 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+
+const stats = [
+  { value: 40, suffix: '+', esLabel: d.about.stats.projects, enLabel: en.about.stats.projects },
+  { value: 50, suffix: '+', esLabel: d.about.stats.experience, enLabel: en.about.stats.experience },
+  { value: 30, suffix: '+', esLabel: d.about.stats.technologies, enLabel: en.about.stats.technologies },
+];
+
+const techStack = [
+  'React', 'Next.js', 'Node.js', 'TypeScript', 'Python', 'Go',
+  'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform',
+  'PostgreSQL', 'MongoDB', 'Redis', 'GraphQL', 'REST', 'gRPC',
+  'React', 'Next.js', 'Node.js', 'TypeScript', 'Python', 'Go',
+  'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform',
+  'PostgreSQL', 'MongoDB', 'Redis', 'GraphQL', 'REST', 'gRPC',
+];
+---
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text reveal">
+        <span class="overline" data-es={d.about.overline} data-en={en.about.overline}>{d.about.overline}</span>
+        <h2 class="about-title">
+          <span data-es={d.about.title_1} data-en={en.about.title_1}>{d.about.title_1}</span><br />
+          <span class="gradient-text" data-es={d.about.title_2} data-en={en.about.title_2}>{d.about.title_2}</span>
+        </h2>
+        <p class="section-description" data-es={d.about.description} data-en={en.about.description}>
+          {d.about.description}
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        {stats.map((stat, i) => (
+          <div class={`stat-card reveal reveal-delay-${i + 1}`}>
+            <div class="stat-value">
+              <span class="counter" data-target={stat.value}>0</span>{stat.suffix}
+            </div>
+            <div class="stat-label" data-es={stat.esLabel} data-en={stat.enLabel}>{stat.esLabel}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="marquee-container reveal">
+      <div class="marquee">
+        <div class="marquee-track">
+          {techStack.map((tech) => (
+            <span class="marquee-item">{tech}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    padding: 28px 32px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    transition: all var(--transition);
+  }
+
+  .stat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .marquee-container {
+    overflow: hidden;
+    padding: 24px 0;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 40px;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-item {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition);
+  }
+
+  .marquee-item:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-card {
+      padding: 20px 16px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target || '0');
+            let current = 0;
+            const increment = target / 40;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              el.textContent = Math.floor(current).toString();
+            }, 40);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((c) => observer.observe(c));
+  }
+  animateCounters();
+</script>

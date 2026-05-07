@@ -1,0 +1,156 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+
+const services = [
+  { key: 'architecture', icon: 'arch', classes: '' },
+  { key: 'cloud', icon: 'cloud', classes: '' },
+  { key: 'development', icon: 'dev', classes: '' },
+  { key: 'consulting', icon: 'consult', classes: '' },
+  { key: 'integrations', icon: 'integrate', classes: '' },
+  { key: 'data', icon: 'data', classes: '' },
+] as const;
+
+const icons: Record<string, string> = {
+  arch: '<path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 7l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+  cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  dev: '<polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  consult: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  integrate: '<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+  data: '<path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+};
+---
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="overline" data-es={d.services.overline} data-en={en.services.overline}>{d.services.overline}</span>
+      <h2 class="section-title" data-es={d.services.title} data-en={en.services.title}>{d.services.title}</h2>
+    </div>
+
+    <div class="bento-grid">
+      {services.map((s, i) => {
+        const esData = d.services[s.key] as { title: string; description: string };
+        const enData = en.services[s.key] as { title: string; description: string };
+        return (
+          <div class={`bento-card ${s.classes} reveal reveal-delay-${i + 1}`}>
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" set:html={icons[s.icon]} />
+            </div>
+            <h3 class="card-title" data-es={esData.title} data-en={enData.title}>{esData.title}</h3>
+            <p class="card-description" data-es={esData.description} data-en={enData.description}>{esData.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-header {
+    margin-bottom: 48px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .bento-card {
+    position: relative;
+    padding: 32px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+
+  .bento-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent-glow), transparent 40%);
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+  }
+
+  .bento-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-large {
+    grid-column: span 2;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: 20px;
+    transition: all var(--transition);
+  }
+
+  .bento-card:hover .card-icon {
+    background: var(--accent-glow-strong);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .card-large {
+      grid-column: span 1;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .card-large {
+      grid-column: span 2;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.bento-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const el = card as HTMLElement;
+      const rect = el.getBoundingClientRect();
+      const x = (e as MouseEvent).clientX - rect.left;
+      const y = (e as MouseEvent).clientY - rect.top;
+      el.style.setProperty('--mouse-x', `${x}px`);
+      el.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+</script>

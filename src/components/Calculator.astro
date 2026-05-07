@@ -1,0 +1,473 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+---
+
+<section class="section" id="calculator">
+  <div class="container">
+    <div class="quiz-header reveal">
+      <span class="overline" data-es={d.quiz.overline} data-en={en.quiz.overline}>{d.quiz.overline}</span>
+      <h2 class="section-title" data-es={d.quiz.title} data-en={en.quiz.title}>{d.quiz.title}</h2>
+      <p class="section-description" data-es={d.quiz.description} data-en={en.quiz.description}>
+        {d.quiz.description}
+      </p>
+    </div>
+
+    <div class="quiz-card reveal reveal-delay-2" id="quiz">
+      <!-- Progress bar -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+      </div>
+
+      <!-- Questions -->
+      <div class="quiz-body" id="quiz-body">
+        {d.quiz.questions.map((q, qi) => (
+          <div class="quiz-step" data-step={qi} style={qi === 0 ? '' : 'display:none'}>
+            <div class="quiz-step-indicator">
+              <span data-es={d.quiz.step} data-en={en.quiz.step}>{d.quiz.step}</span> {qi + 1} <span data-es={d.quiz.of} data-en={en.quiz.of}>{d.quiz.of}</span> {d.quiz.questions.length}
+            </div>
+            <h3 class="quiz-question" data-es={q.question} data-en={en.quiz.questions[qi].question}>{q.question}</h3>
+            <div class="quiz-options">
+              {q.options.map((opt, oi) => (
+                <button
+                  class="quiz-option"
+                  data-question={qi}
+                  data-value={opt.value}
+                >
+                  <span class="quiz-option-label" data-es={opt.label} data-en={en.quiz.questions[qi].options[oi].label}>{opt.label}</span>
+                  <span class="quiz-option-desc" data-es={opt.desc} data-en={en.quiz.questions[qi].options[oi].desc}>{opt.desc}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <!-- Result -->
+        <div class="quiz-step quiz-result-step" data-step="result" style="display:none">
+          <h3 class="quiz-result-title" data-es={d.quiz.result.title} data-en={en.quiz.result.title}>{d.quiz.result.title}</h3>
+          
+          <div class="quiz-result-grid">
+            <div class="result-card">
+              <span class="result-card-label" data-es={d.quiz.result.complexity} data-en={en.quiz.result.complexity}>{d.quiz.result.complexity}</span>
+              <span class="result-card-value" id="quiz-complexity"></span>
+            </div>
+            <div class="result-card">
+              <span class="result-card-label" data-es={d.quiz.result.timeline} data-en={en.quiz.result.timeline}>{d.quiz.result.timeline}</span>
+              <span class="result-card-value" id="quiz-timeline"></span>
+            </div>
+            <div class="result-card">
+              <span class="result-card-label" data-es={d.quiz.result.team} data-en={en.quiz.result.team}>{d.quiz.result.team}</span>
+              <span class="result-card-value" id="quiz-team"></span>
+            </div>
+          </div>
+
+          <div class="quiz-tags-section">
+            <span class="quiz-tags-label" data-es={d.quiz.result.includes} data-en={en.quiz.result.includes}>{d.quiz.result.includes}</span>
+            <div class="quiz-tags" id="quiz-tags"></div>
+          </div>
+
+          <p class="quiz-free-note" data-es={d.quiz.result.free_note} data-en={en.quiz.result.free_note}>
+            <span class="free-dot"></span>
+            {d.quiz.result.free_note}
+          </p>
+
+          <a href="#contact" class="btn btn-primary quiz-cta" data-es={d.quiz.result.cta} data-en={en.quiz.result.cta}>
+            {d.quiz.result.cta}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="quiz-nav" id="quiz-nav">
+        <button class="btn btn-secondary quiz-back" id="quiz-back" style="visibility:hidden" data-es={d.quiz.back} data-en={en.quiz.back}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3m0 0l4-4M3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {d.quiz.back}
+        </button>
+        <button class="btn btn-secondary quiz-restart" id="quiz-restart" style="display:none" data-es={d.quiz.restart} data-en={en.quiz.restart}>
+          {d.quiz.restart}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quiz-header {
+    margin-bottom: 48px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quiz-card {
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+
+  .quiz-progress {
+    height: 3px;
+    background: var(--surface-elevated);
+  }
+
+  .quiz-progress-bar {
+    height: 100%;
+    width: 20%;
+    background: var(--gradient-brand);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .quiz-body {
+    padding: 40px;
+  }
+
+  .quiz-step-indicator {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .quiz-question {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quiz-option {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    text-align: left;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    transform: translateX(4px);
+  }
+
+  .quiz-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  .quiz-option-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .quiz-option-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .quiz-nav {
+    padding: 0 40px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quiz-back, .quiz-restart {
+    font-size: 0.875rem;
+    padding: 10px 20px;
+  }
+
+  /* Result */
+  .quiz-result-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  .quiz-result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .result-card {
+    padding: 20px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .result-card-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .result-card-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .quiz-tags-section {
+    margin-bottom: 24px;
+  }
+
+  .quiz-tags-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .quiz-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .quiz-tag {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    background: rgba(56, 189, 248, 0.05);
+  }
+
+  .quiz-free-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 24px;
+  }
+
+  .free-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+  }
+
+  .quiz-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .quiz-body {
+      padding: 28px 20px;
+    }
+
+    .quiz-nav {
+      padding: 0 20px 24px;
+    }
+
+    .quiz-result-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quiz-question {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  const totalQuestions = 5;
+  let currentStep = 0;
+  const answers: string[] = [];
+
+  const progressBar = document.getElementById('quiz-progress-bar')!;
+  const backBtn = document.getElementById('quiz-back')!;
+  const restartBtn = document.getElementById('quiz-restart')!;
+  const quizNav = document.getElementById('quiz-nav')!;
+
+  function showStep(step: number | 'result') {
+    document.querySelectorAll('.quiz-step').forEach((el) => {
+      (el as HTMLElement).style.display = 'none';
+    });
+    const selector = step === 'result' ? '[data-step="result"]' : `[data-step="${step}"]`;
+    const target = document.querySelector(selector) as HTMLElement;
+    if (target) target.style.display = '';
+
+    if (step === 'result') {
+      progressBar.style.width = '100%';
+      backBtn.style.visibility = 'hidden';
+      restartBtn.style.display = '';
+      showResult();
+    } else {
+      progressBar.style.width = `${((step + 1) / (totalQuestions + 1)) * 100}%`;
+      backBtn.style.visibility = step === 0 ? 'hidden' : 'visible';
+      restartBtn.style.display = 'none';
+    }
+  }
+
+  function showResult() {
+    const [type, status, scale, integrations, urgency] = answers;
+    const lang = document.documentElement.lang || 'es';
+
+    // Calculate complexity score (0-2)
+    const scoreMap: Record<string, number> = {
+      mvp: 0, webapp: 1, platform: 2, consulting: 0,
+      scratch: 1, improve: 0, migrate: 2,
+      small: 0, medium: 1, large: 2,
+      none: 0, some: 1, many: 2,
+      flexible: 0, moderate: 1, urgent: 2,
+    };
+    const totalScore = [type, status, scale, integrations, urgency]
+      .reduce((sum, v) => sum + (scoreMap[v] || 0), 0);
+    const maxScore = 10;
+    const normalized = totalScore / maxScore;
+
+    let complexityKey: string;
+    if (normalized < 0.35) complexityKey = 'low';
+    else if (normalized < 0.65) complexityKey = 'medium';
+    else complexityKey = 'high';
+
+    // Timelines (weeks)
+    const timelines: Record<string, Record<string, [number, number]>> = {
+      mvp:        { low: [1, 3], medium: [3, 5], high: [5, 8] },
+      webapp:     { low: [4, 6], medium: [6, 10], high: [10, 16] },
+      platform:   { low: [8, 12], medium: [12, 20], high: [16, 32] },
+      consulting: { low: [1, 1], medium: [2, 4], high: [3, 6] },
+    };
+    const [minW, maxW] = timelines[type]?.[complexityKey] || [4, 8];
+
+    // Team size
+    const teams: Record<string, Record<string, number>> = {
+      mvp:        { low: 1, medium: 2, high: 3 },
+      webapp:     { low: 2, medium: 3, high: 4 },
+      platform:   { low: 3, medium: 4, high: 5 },
+      consulting: { low: 1, medium: 2, high: 3 },
+    };
+    const teamSize = teams[type]?.[complexityKey] || 3;
+
+    // Get localized strings
+    const complexityLabels: Record<string, Record<string, string>> = {
+      es: { low: 'Baja', medium: 'Media', high: 'Alta' },
+      en: { low: 'Low', medium: 'Medium', high: 'High' },
+    };
+
+    const weekWord = (n: number) => {
+      if (lang === 'en') return n === 1 ? 'week' : 'weeks';
+      return n === 1 ? 'semana' : 'semanas';
+    };
+    const engWord = lang === 'en' ? 'architects' : 'arquitectos';
+
+    document.getElementById('quiz-complexity')!.textContent = complexityLabels[lang]?.[complexityKey] || complexityKey;
+    
+    const timelineText = minW === maxW 
+      ? `${minW} ${weekWord(minW)}`
+      : `${minW} — ${maxW} ${weekWord(maxW)}`;
+    document.getElementById('quiz-timeline')!.textContent = timelineText;
+    document.getElementById('quiz-team')!.textContent = `${teamSize} ${engWord}`;
+
+    // Tags
+    const tagKeys = [type, status, scale, integrations, urgency];
+    const tagsContainer = document.getElementById('quiz-tags')!;
+    
+    const tagsEs: Record<string, string> = {
+      mvp: 'MVP rápido', webapp: 'App Web completa', platform: 'Plataforma escalable', consulting: 'Consultoría técnica',
+      scratch: 'Desde cero', improve: 'Mejora de existente', migrate: 'Migración',
+      small: 'Baja escala', medium: 'Escala media', large: 'Alta escala',
+      none: 'Sin integraciones complejas', some: 'Integraciones moderadas', many: 'Integraciones complejas',
+      flexible: 'Timeline flexible', moderate: 'Timeline moderado', urgent: 'Entrega urgente',
+    };
+    const tagsEn: Record<string, string> = {
+      mvp: 'Quick MVP', webapp: 'Full Web App', platform: 'Scalable Platform', consulting: 'Technical Consulting',
+      scratch: 'From scratch', improve: 'Improving existing', migrate: 'Migration',
+      small: 'Low scale', medium: 'Medium scale', large: 'High scale',
+      none: 'No complex integrations', some: 'Moderate integrations', many: 'Complex integrations',
+      flexible: 'Flexible timeline', moderate: 'Moderate timeline', urgent: 'Urgent delivery',
+    };
+    const tags = lang === 'en' ? tagsEn : tagsEs;
+
+    tagsContainer.innerHTML = tagKeys
+      .map((k) => `<span class="quiz-tag">${tags[k] || k}</span>`)
+      .join('');
+  }
+
+  // Option click -> auto-advance
+  document.querySelectorAll('.quiz-option').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qi = parseInt((btn as HTMLElement).dataset.question || '0');
+      const value = (btn as HTMLElement).dataset.value || '';
+
+      // Mark selected
+      btn.closest('.quiz-options')?.querySelectorAll('.quiz-option').forEach((b) => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      answers[qi] = value;
+
+      // Auto-advance after brief delay
+      setTimeout(() => {
+        if (qi < totalQuestions - 1) {
+          currentStep = qi + 1;
+          showStep(currentStep);
+        } else {
+          showStep('result');
+        }
+      }, 250);
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  restartBtn.addEventListener('click', () => {
+    currentStep = 0;
+    answers.length = 0;
+    document.querySelectorAll('.quiz-option').forEach((b) => b.classList.remove('selected'));
+    showStep(0);
+  });
+
+  showStep(0);
+</script>

@@ -1,0 +1,163 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-gradient"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-block">
+          <a href="#" class="footer-logo" aria-label="HandFive — Tecnología que conecta">
+            <img src="/logo-footer.png" alt="HandFive — Tecnología que conecta" class="footer-logo-img" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <h4 class="footer-heading" data-es={d.footer.nav_title} data-en={en.footer.nav_title}>{d.footer.nav_title}</h4>
+        <nav class="footer-links">
+          <a href="#services" data-es={d.nav.services} data-en={en.nav.services}>{d.nav.services}</a>
+          <a href="#about" data-es={d.nav.about} data-en={en.nav.about}>{d.nav.about}</a>
+          <a href="#calculator" data-es={d.nav.calculator} data-en={en.nav.calculator}>{d.nav.calculator}</a>
+          <a href="#team" data-es={d.nav.team} data-en={en.nav.team}>{d.nav.team}</a>
+          <a href="#process" data-es={d.nav.process} data-en={en.nav.process}>{d.nav.process}</a>
+          <a href="#contact" data-es={d.nav.contact} data-en={en.nav.contact}>{d.nav.contact}</a>
+        </nav>
+      </div>
+
+      <div class="footer-social">
+        <h4 class="footer-heading" data-es={d.footer.social_title} data-en={en.footer.social_title}>{d.footer.social_title}</h4>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="X / Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16H20L8.267 4H4z"/><path d="M4 20l6.768-6.768M20 4l-6.768 6.768"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} HandFive. <span data-es={d.footer.rights} data-en={en.footer.rights}>{d.footer.rights}</span></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    padding: 64px 0 32px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-brand);
+    opacity: 0.5;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand-block {
+    margin-bottom: 12px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-logo-img {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 640px) {
+    .footer-logo-img {
+      height: 48px;
+    }
+  }
+
+  .footer-heading {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition);
+  }
+
+  .social-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

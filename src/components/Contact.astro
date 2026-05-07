@@ -1,0 +1,298 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+---
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <span class="overline" data-es={d.contact.overline} data-en={en.contact.overline}>{d.contact.overline}</span>
+        <h2 class="section-title" data-es={d.contact.title} data-en={en.contact.title}>{d.contact.title}</h2>
+        <p class="section-description" data-es={d.contact.description} data-en={en.contact.description}>
+          {d.contact.description}
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@handfivetech.com</span>
+          </div>
+          <div class="contact-detail">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Buenos Aires, Argentina</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-2" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name" data-es={d.contact.name} data-en={en.contact.name}>{d.contact.name}</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              required
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact-email" data-es={d.contact.email} data-en={en.contact.email}>{d.contact.email}</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              required
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact-type" data-es={d.contact.project_type} data-en={en.contact.project_type}>{d.contact.project_type}</label>
+          <select id="contact-type" name="project_type" required>
+            <option value="" disabled selected data-es={d.contact.select_type} data-en={en.contact.select_type}>{d.contact.select_type}</option>
+            <option value="mvp" data-es="MVP / Prototipo" data-en="MVP / Prototype">MVP / Prototipo</option>
+            <option value="webapp" data-es="Aplicación Web" data-en="Web Application">Aplicación Web</option>
+            <option value="platform" data-es="Plataforma / SaaS" data-en="Platform / SaaS">Plataforma / SaaS</option>
+            <option value="consulting" data-es="Consultoría Técnica" data-en="Technical Consulting">Consultoría Técnica</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="contact-message" data-es={d.contact.message} data-en={en.contact.message}>{d.contact.message}</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            rows="5"
+            required
+            data-es-placeholder={d.contact.message_placeholder}
+            data-en-placeholder={en.contact.message_placeholder}
+            placeholder={d.contact.message_placeholder}
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit" id="form-submit">
+          <span data-es={d.contact.submit} data-en={en.contact.submit}>{d.contact.submit}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="form-feedback" id="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .contact-details {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+  }
+
+  .contact-detail svg {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    transition: all var(--transition);
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .form-group select option {
+    background: var(--surface);
+    color: var(--text-primary);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: none;
+  }
+
+  .form-submit:hover::before {
+    animation: shimmer 1.5s ease-in-out;
+  }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-feedback {
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-height: 24px;
+  }
+
+  .form-feedback.success {
+    color: #22c55e;
+  }
+
+  .form-feedback.error {
+    color: #ef4444;
+  }
+
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const feedback = document.getElementById('form-feedback') as HTMLElement;
+  const submitBtn = document.getElementById('form-submit') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      project_type: formData.get('project_type') as string,
+      message: formData.get('message') as string,
+      lang: document.documentElement.lang || 'es',
+    };
+
+    try {
+      // Send email via Web3Forms
+      const emailRes = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '3b44c463-4298-429b-9963-d227d7efd79a',
+          subject: `Nuevo contacto HandFive: ${data.name}`,
+          from_name: 'HandFive Web',
+          name: data.name,
+          email: data.email,
+          project_type: data.project_type,
+          message: data.message,
+        }),
+      });
+      const emailData = await emailRes.json();
+      if (!emailData.success) throw new Error('Email failed');
+
+      // Also save to Supabase (non-blocking)
+      import('../lib/supabase').then(({ supabase }) => {
+        if (supabase) supabase.from('contacts').insert([data]);
+      }).catch(() => {});
+
+      const lang = document.documentElement.lang || 'es';
+      const successMsg = lang === 'en'
+        ? 'Message sent. We\'ll contact you soon.'
+        : 'Mensaje enviado. Te contactamos pronto.';
+
+      feedback.textContent = successMsg;
+      feedback.className = 'form-feedback success';
+      form.reset();
+    } catch (err) {
+      console.error('Contact form error:', err);
+      const lang = document.documentElement.lang || 'es';
+      const errorMsg = lang === 'en'
+        ? 'Something went wrong. Try again or email us at info@handfivetech.com'
+        : 'Hubo un error. Intentá de nuevo o escribinos a info@handfivetech.com';
+
+      feedback.textContent = errorMsg;
+      feedback.className = 'form-feedback error';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>

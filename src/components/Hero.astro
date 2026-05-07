@@ -1,0 +1,183 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+---
+
+<section class="hero" id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal" data-es={d.hero.badge} data-en={en.hero.badge}>
+      <span class="badge-dot"></span>
+      {d.hero.badge}
+    </div>
+
+    <h1 class="hero-title">
+      <span class="hero-word reveal reveal-delay-1" data-es={d.hero.title_1} data-en={en.hero.title_1}>{d.hero.title_1}</span>{' '}
+      <span class="hero-word reveal reveal-delay-2 gradient-text-animated" data-es={d.hero.title_2} data-en={en.hero.title_2}>{d.hero.title_2}</span>{' '}
+      <span class="hero-word reveal reveal-delay-3" data-es={d.hero.title_3} data-en={en.hero.title_3}>{d.hero.title_3}</span>
+    </h1>
+
+    <p class="hero-subtitle reveal reveal-delay-3" data-es={d.hero.subtitle} data-en={en.hero.subtitle}>
+      {d.hero.subtitle}
+    </p>
+
+    <p class="hero-description reveal reveal-delay-4" data-es={d.hero.description} data-en={en.hero.description}>
+      {d.hero.description}
+    </p>
+
+    <div class="hero-ctas reveal reveal-delay-5">
+      <a href="#contact" class="btn btn-primary" data-es={d.hero.cta_primary} data-en={en.hero.cta_primary}>
+        {d.hero.cta_primary}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#services" class="btn btn-secondary" data-es={d.hero.cta_secondary} data-en={en.hero.cta_secondary}>
+        {d.hero.cta_secondary}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--header-height);
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .hero-word {
+    display: inline-block;
+  }
+
+  .gradient-text-animated {
+    background: linear-gradient(
+      135deg,
+      #38bdf8 0%,
+      #2563eb 25%,
+      #7c3aed 50%,
+      #2563eb 75%,
+      #38bdf8 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s linear infinite;
+  }
+
+  @keyframes shimmer-text {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero-content {
+      padding-top: 40px;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .hero-ctas .btn {
+      width: 100%;
+    }
+  }
+</style>

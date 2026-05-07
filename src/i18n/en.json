@@ -1,0 +1,197 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "calculator": "Your project",
+    "team": "Team",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Available for new projects",
+    "title_1": "We orchestrate",
+    "title_2": "technology",
+    "title_3": "ecosystems",
+    "subtitle": "5 architects. One ecosystem. Enterprise results.",
+    "description": "We are a compact team of software architects who design, build and operate high-impact technology solutions for businesses of all sizes.",
+    "cta_primary": "Let's talk",
+    "cta_secondary": "View services"
+  },
+  "services": {
+    "overline": "What we do",
+    "title": "End-to-end solutions",
+    "architecture": {
+      "title": "Architecture",
+      "description": "We design scalable, resilient and maintainable systems. From microservices to modular monoliths."
+    },
+    "cloud": {
+      "title": "Cloud & DevOps",
+      "description": "Infrastructure as code, CI/CD, containers and orchestration. AWS, GCP, Azure."
+    },
+    "development": {
+      "title": "Custom Development",
+      "description": "Web applications, APIs, platforms and MVPs built with industry best practices."
+    },
+    "consulting": {
+      "title": "Technical Consulting",
+      "description": "Code audits, technical roadmap definition and mentoring for internal teams."
+    },
+    "integrations": {
+      "title": "Integrations",
+      "description": "We connect your systems: APIs, webhooks, ETLs, third-party services and automations."
+    },
+    "data": {
+      "title": "Data & Analytics",
+      "description": "Data pipelines, dashboards, reporting and business intelligence solutions."
+    }
+  },
+  "about": {
+    "overline": "Our philosophy",
+    "title_1": "Lightweight on costs.",
+    "title_2": "Heavy on architecture.",
+    "description": "We're not a traditional consultancy with layers of management. We are 5 software architects who work directly with you, eliminating corporate overhead and delivering enterprise-grade solutions.",
+    "stats": {
+      "projects": "Projects delivered",
+      "experience": "Years of combined experience",
+      "technologies": "Technologies mastered"
+    }
+  },
+  "quiz": {
+    "overline": "Discover your project",
+    "title": "What do you need to build?",
+    "description": "Answer a few questions and we'll put together a project profile with suggested timeline and team.",
+    "next": "Next",
+    "back": "Back",
+    "restart": "Start over",
+    "step": "Step",
+    "of": "of",
+    "questions": [
+      {
+        "question": "What type of solution are you looking for?",
+        "options": [
+          { "label": "MVP / Prototype", "value": "mvp", "desc": "Validate an idea with a minimum functional product" },
+          { "label": "Web Application", "value": "webapp", "desc": "Full app with frontend, backend and admin panel" },
+          { "label": "Platform / SaaS", "value": "platform", "desc": "Digital product with multiple modules and scalability" },
+          { "label": "Consulting", "value": "consulting", "desc": "Audit, architecture, roadmap or technical mentoring" }
+        ]
+      },
+      {
+        "question": "Do you have anything built already?",
+        "options": [
+          { "label": "Starting from scratch", "value": "scratch", "desc": "No existing code or infrastructure" },
+          { "label": "Improve something existing", "value": "improve", "desc": "There's a product that needs to evolve" },
+          { "label": "Migrate or rewrite", "value": "migrate", "desc": "There's a legacy system that needs modernizing" }
+        ]
+      },
+      {
+        "question": "How many users do you expect?",
+        "options": [
+          { "label": "Less than 100", "value": "small", "desc": "Internal team or small group" },
+          { "label": "100 to 10,000", "value": "medium", "desc": "Growing product with active user base" },
+          { "label": "More than 10,000", "value": "large", "desc": "High scale, needs robust infrastructure" }
+        ]
+      },
+      {
+        "question": "Do you need external integrations?",
+        "options": [
+          { "label": "None or very few", "value": "none", "desc": "Mostly independent system" },
+          { "label": "Some (2-5)", "value": "some", "desc": "Payment gateways, third-party APIs, etc." },
+          { "label": "Many (5+)", "value": "many", "desc": "Complex ecosystem with multiple connected services" }
+        ]
+      },
+      {
+        "question": "How urgent is it?",
+        "options": [
+          { "label": "Flexible", "value": "flexible", "desc": "No strict deadline, quality first" },
+          { "label": "Moderate", "value": "moderate", "desc": "There's a target date but with some margin" },
+          { "label": "Urgent", "value": "urgent", "desc": "We need to launch as soon as possible" }
+        ]
+      }
+    ],
+    "result": {
+      "title": "Your project profile",
+      "complexity": "Estimated complexity",
+      "timeline": "Suggested timeline",
+      "team": "Recommended team",
+      "week": "week",
+      "weeks": "weeks",
+      "engineers": "architects",
+      "complexity_levels": { "low": "Low", "medium": "Medium", "high": "High" },
+      "cta": "Get your personalized proposal",
+      "free_note": "Initial diagnosis is free",
+      "includes": "Your project would include",
+      "tags": {
+        "mvp": "Quick MVP",
+        "webapp": "Full Web App",
+        "platform": "Scalable Platform",
+        "consulting": "Technical Consulting",
+        "scratch": "From scratch",
+        "improve": "Improving existing",
+        "migrate": "Migration",
+        "small": "Low scale",
+        "medium": "Medium scale",
+        "large": "High scale",
+        "none": "No complex integrations",
+        "some": "Moderate integrations",
+        "many": "Complex integrations",
+        "flexible": "Flexible timeline",
+        "moderate": "Moderate timeline",
+        "urgent": "Urgent delivery"
+      }
+    }
+  },
+  "team": {
+    "overline": "The team",
+    "title": "5 architects, one mission",
+    "description": "Each of us brings a unique specialization. Together, we cover the full spectrum of software development.",
+    "members": [
+      { "name": "Adrián Casini", "role": "Software Engineer" },
+      { "name": "Joan Masini", "role": "Software Engineer" },
+      { "name": "Damian Peliza", "role": "Software Engineer" },
+      { "name": "Leandro Roa", "role": "Software Engineer" },
+      { "name": "Rosana Bajcic", "role": "Software Engineer" }
+    ]
+  },
+  "process": {
+    "overline": "How we work",
+    "title": "From idea to product",
+    "steps": [
+      {
+        "title": "Discovery",
+        "description": "We understand your business, your technical challenges and define the project scope together."
+      },
+      {
+        "title": "Architecture",
+        "description": "We design the technical solution, choose the stack and define a roadmap with clear deliverables."
+      },
+      {
+        "title": "Execution",
+        "description": "We develop with short sprints, frequent deliveries and constant communication. No surprises."
+      },
+      {
+        "title": "Support",
+        "description": "We don't disappear after delivery. Monitoring, maintenance and continuous evolution of your product."
+      }
+    ]
+  },
+  "contact": {
+    "overline": "Let's start",
+    "title": "Your next project starts here",
+    "description": "Tell us about your idea or technical challenge. We'll get back to you within 24 hours.",
+    "name": "Name",
+    "email": "Email",
+    "project_type": "Project type",
+    "select_type": "Select a type",
+    "message": "Message",
+    "message_placeholder": "Tell us about your project...",
+    "submit": "Send message",
+    "success": "Message sent. We'll contact you soon.",
+    "error": "Something went wrong. Try again or email us at info@handfivetech.com"
+  },
+  "footer": {
+    "tagline": "Software engineering without the corporate overhead.",
+    "nav_title": "Navigation",
+    "social_title": "Social",
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "about": "Nosotros",
+    "calculator": "Tu proyecto",
+    "team": "Equipo",
+    "process": "Proceso",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Disponibles para nuevos proyectos",
+    "title_1": "Orquestamos",
+    "title_2": "ecosistemas",
+    "title_3": "tecnológicos",
+    "subtitle": "5 arquitectos. Un ecosistema. Resultados enterprise.",
+    "description": "Somos un equipo compacto de arquitectos de software que diseña, construye y opera soluciones tecnológicas de alto impacto para negocios de todos los tamaños.",
+    "cta_primary": "Hablemos",
+    "cta_secondary": "Ver servicios"
+  },
+  "services": {
+    "overline": "Lo que hacemos",
+    "title": "Soluciones de punta a punta",
+    "architecture": {
+      "title": "Arquitectura",
+      "description": "Diseñamos sistemas escalables, resilientes y mantenibles. Desde microservicios hasta monolitos modulares."
+    },
+    "cloud": {
+      "title": "Cloud & DevOps",
+      "description": "Infraestructura como código, CI/CD, contenedores y orquestación. AWS, GCP, Azure."
+    },
+    "development": {
+      "title": "Desarrollo a Medida",
+      "description": "Aplicaciones web, APIs, plataformas y MVPs construidos con las mejores prácticas de la industria."
+    },
+    "consulting": {
+      "title": "Consultoría Técnica",
+      "description": "Auditorías de código, definición de roadmaps técnicos y mentoría para equipos internos."
+    },
+    "integrations": {
+      "title": "Integraciones",
+      "description": "Conectamos tus sistemas: APIs, webhooks, ETLs, servicios de terceros y automatizaciones."
+    },
+    "data": {
+      "title": "Data & Analytics",
+      "description": "Pipelines de datos, dashboards, reportería y soluciones de business intelligence."
+    }
+  },
+  "about": {
+    "overline": "Nuestra filosofía",
+    "title_1": "Liviana en costos.",
+    "title_2": "Pesada en arquitectura.",
+    "description": "No somos una consultora tradicional con capas de management. Somos 5 arquitectos de software que trabajan directo con vos, eliminando el overhead corporativo y entregando soluciones de nivel enterprise.",
+    "stats": {
+      "projects": "Proyectos entregados",
+      "experience": "Años de experiencia combinada",
+      "technologies": "Tecnologías dominadas"
+    }
+  },
+  "quiz": {
+    "overline": "Descubrí tu proyecto",
+    "title": "¿Qué necesitás construir?",
+    "description": "Respondé algunas preguntas y te armamos un perfil de tu proyecto con timeline y equipo sugerido.",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "restart": "Empezar de nuevo",
+    "step": "Paso",
+    "of": "de",
+    "questions": [
+      {
+        "question": "¿Qué tipo de solución buscás?",
+        "options": [
+          { "label": "MVP / Prototipo", "value": "mvp", "desc": "Validar una idea con un producto funcional mínimo" },
+          { "label": "Aplicación Web", "value": "webapp", "desc": "App completa con frontend, backend y panel de admin" },
+          { "label": "Plataforma / SaaS", "value": "platform", "desc": "Producto digital con múltiples módulos y escalabilidad" },
+          { "label": "Consultoría", "value": "consulting", "desc": "Auditoría, arquitectura, roadmap o mentoría técnica" }
+        ]
+      },
+      {
+        "question": "¿Tenés algo construido ya?",
+        "options": [
+          { "label": "Empezamos de cero", "value": "scratch", "desc": "No hay código ni infraestructura existente" },
+          { "label": "Mejorar algo existente", "value": "improve", "desc": "Ya hay un producto pero necesita evolucionar" },
+          { "label": "Migrar o reescribir", "value": "migrate", "desc": "Hay un sistema legacy que necesita modernizarse" }
+        ]
+      },
+      {
+        "question": "¿Cuántos usuarios esperás?",
+        "options": [
+          { "label": "Menos de 100", "value": "small", "desc": "Equipo interno o grupo reducido" },
+          { "label": "100 a 10.000", "value": "medium", "desc": "Producto en crecimiento con base de usuarios activa" },
+          { "label": "Más de 10.000", "value": "large", "desc": "Escala alta, necesita infraestructura robusta" }
+        ]
+      },
+      {
+        "question": "¿Necesitás integraciones externas?",
+        "options": [
+          { "label": "No o muy pocas", "value": "none", "desc": "Sistema mayormente independiente" },
+          { "label": "Algunas (2-5)", "value": "some", "desc": "Pasarelas de pago, APIs de terceros, etc." },
+          { "label": "Muchas (+5)", "value": "many", "desc": "Ecosistema complejo con múltiples servicios conectados" }
+        ]
+      },
+      {
+        "question": "¿Qué tan urgente es?",
+        "options": [
+          { "label": "Flexible", "value": "flexible", "desc": "Sin fecha límite estricta, priorizamos calidad" },
+          { "label": "Moderada", "value": "moderate", "desc": "Hay una fecha objetivo pero con margen" },
+          { "label": "Urgente", "value": "urgent", "desc": "Necesitamos salir lo antes posible" }
+        ]
+      }
+    ],
+    "result": {
+      "title": "Perfil de tu proyecto",
+      "complexity": "Complejidad estimada",
+      "timeline": "Timeline sugerido",
+      "team": "Equipo recomendado",
+      "week": "semana",
+      "weeks": "semanas",
+      "engineers": "arquitectos",
+      "complexity_levels": { "low": "Baja", "medium": "Media", "high": "Alta" },
+      "cta": "Pedí tu propuesta personalizada",
+      "free_note": "El diagnóstico inicial es gratuito",
+      "includes": "Tu proyecto incluiría",
+      "tags": {
+        "mvp": "MVP rápido",
+        "webapp": "App Web completa",
+        "platform": "Plataforma escalable",
+        "consulting": "Consultoría técnica",
+        "scratch": "Desde cero",
+        "improve": "Mejora de existente",
+        "migrate": "Migración",
+        "small": "Baja escala",
+        "medium": "Escala media",
+        "large": "Alta escala",
+        "none": "Sin integraciones complejas",
+        "some": "Integraciones moderadas",
+        "many": "Integraciones complejas",
+        "flexible": "Timeline flexible",
+        "moderate": "Timeline moderado",
+        "urgent": "Entrega urgente"
+      }
+    }
+  },
+  "team": {
+    "overline": "El equipo",
+    "title": "5 arquitectos, una misión",
+    "description": "Cada uno de nosotros aporta una especialización única. Juntos, cubrimos el espectro completo del desarrollo de software.",
+    "members": [
+      { "name": "Adrián Casini", "role": "Software Engineer" },
+      { "name": "Joan Masini", "role": "Software Engineer" },
+      { "name": "Damian Peliza", "role": "Software Engineer" },
+      { "name": "Leandro Roa", "role": "Software Engineer" },
+      { "name": "Rosana Bajcic", "role": "Software Engineer" }
+    ]
+  },
+  "process": {
+    "overline": "Cómo trabajamos",
+    "title": "De la idea al producto",
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "description": "Entendemos tu negocio, tus desafíos técnicos y definimos el alcance del proyecto junto a vos."
+      },
+      {
+        "title": "Arquitectura",
+        "description": "Diseñamos la solución técnica, elegimos el stack y definimos la hoja de ruta con entregables claros."
+      },
+      {
+        "title": "Ejecución",
+        "description": "Desarrollamos con sprints cortos, entregas frecuentes y comunicación constante. Sin sorpresas."
+      },
+      {
+        "title": "Soporte",
+        "description": "No desaparecemos después de la entrega. Monitoreo, mantenimiento y evolución continua de tu producto."
+      }
+    ]
+  },
+  "contact": {
+    "overline": "Empecemos",
+    "title": "Tu próximo proyecto empieza acá",
+    "description": "Contanos sobre tu idea o desafío técnico. Te respondemos en menos de 24 horas.",
+    "name": "Nombre",
+    "email": "Email",
+    "project_type": "Tipo de proyecto",
+    "select_type": "Seleccioná un tipo",
+    "message": "Mensaje",
+    "message_placeholder": "Contanos sobre tu proyecto...",
+    "submit": "Enviar mensaje",
+    "success": "Mensaje enviado. Te contactamos pronto.",
+    "error": "Hubo un error. Intentá de nuevo o escribinos a info@handfivetech.com"
+  },
+  "footer": {
+    "tagline": "Ingeniería de software sin el overhead corporativo.",
+    "nav_title": "Navegación",
+    "social_title": "Redes",
+    "rights": "Todos los derechos reservados."
+  }
+}

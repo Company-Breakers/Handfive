@@ -1,0 +1,181 @@
+---
+import { t, defaultLang } from '../i18n/utils';
+const d = t(defaultLang);
+const en = t('en');
+
+const colors = [
+  'linear-gradient(135deg, #38bdf8, #2563eb)',
+  'linear-gradient(135deg, #2563eb, #7c3aed)',
+  'linear-gradient(135deg, #7c3aed, #ec4899)',
+  'linear-gradient(135deg, #ec4899, #f97316)',
+  'linear-gradient(135deg, #f97316, #38bdf8)',
+];
+---
+
+<section class="section" id="team">
+  <div class="container">
+    <div class="team-header reveal">
+      <span class="overline" data-es={d.team.overline} data-en={en.team.overline}>{d.team.overline}</span>
+      <h2 class="section-title" data-es={d.team.title} data-en={en.team.title}>{d.team.title}</h2>
+      <p class="section-description" data-es={d.team.description} data-en={en.team.description}>
+        {d.team.description}
+      </p>
+    </div>
+
+    <div class="team-grid" id="team-grid">
+      {colors.map((color, i) => (
+        <div class={`team-card reveal reveal-delay-${i + 1}`} data-member-idx={i}>
+          <div class="team-avatar" style={`background: ${color}`}>
+            <span class="team-initials"></span>
+          </div>
+          <h3 class="team-name"></h3>
+          <p class="team-role"></p>
+          <div class="team-links">
+            <a href="#" class="team-social" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .team-header {
+    text-align: center;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .team-card {
+    text-align: center;
+    padding: 32px 20px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .team-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .team-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .team-role {
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .team-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .team-social {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition);
+  }
+
+  .team-social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  @media (max-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .team-card {
+      padding: 24px 16px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const members = [
+    { es: { name: 'Adrián Casini', role: 'Software Engineer' }, en: { name: 'Adrián Casini', role: 'Software Engineer' } },
+    { es: { name: 'Joan Masini', role: 'Software Engineer' }, en: { name: 'Joan Masini', role: 'Software Engineer' } },
+    { es: { name: 'Damian Peliza', role: 'Software Engineer' }, en: { name: 'Damian Peliza', role: 'Software Engineer' } },
+    { es: { name: 'Leandro Roa', role: 'Software Engineer' }, en: { name: 'Leandro Roa', role: 'Software Engineer' } },
+    { es: { name: 'Rosana Bajcic', role: 'Software Engineer' }, en: { name: 'Rosana Bajcic', role: 'Software Engineer' } },
+  ];
+
+  function renderMembers() {
+    const lang = (document.documentElement.lang || 'es') as 'es' | 'en';
+    document.querySelectorAll('[data-member-idx]').forEach((card) => {
+      const idx = parseInt((card as HTMLElement).dataset.memberIdx || '0');
+      const m = members[idx]?.[lang] || members[idx]?.es;
+      if (!m) return;
+      const initials = m.name.split(' ').map((w: string) => w[0]).join('');
+      const initialsEl = card.querySelector('.team-initials');
+      const nameEl = card.querySelector('.team-name');
+      const roleEl = card.querySelector('.team-role');
+      if (initialsEl) initialsEl.textContent = initials;
+      if (nameEl) nameEl.textContent = m.name;
+      if (roleEl) roleEl.textContent = m.role;
+    });
+  }
+
+  renderMembers();
+
+  const observer = new MutationObserver(() => renderMembers());
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+</script>

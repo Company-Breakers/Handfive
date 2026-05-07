@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'HandFive — Ingeniería de software sin overhead corporativo',
+  description = 'Somos 5 ingenieros senior ofreciendo soluciones tecnológicas de alto impacto. Arquitectura, Cloud, DevOps, Desarrollo y Consultoría para negocios de todos los tamaños.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/logo-light.png" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Language toggle system
+      function setLang(lang: string) {
+        document.documentElement.lang = lang;
+        document.documentElement.setAttribute('data-lang', lang);
+        localStorage.setItem('handfive-lang', lang);
+
+        document.querySelectorAll('[data-es]').forEach((el) => {
+          const text = el.getAttribute(`data-${lang}`);
+          if (text) el.textContent = text;
+        });
+
+        document.querySelectorAll('[data-es-placeholder]').forEach((el) => {
+          const text = el.getAttribute(`data-${lang}-placeholder`);
+          if (text) (el as HTMLInputElement | HTMLTextAreaElement).placeholder = text;
+        });
+
+        document.querySelectorAll('.lang-toggle-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+        });
+
+        // Update quiz description on lang change
+        const descEl = document.getElementById('type-description');
+        if (descEl) {
+          const activeType = document.querySelector('#calc-type .calc-option.active') as HTMLElement;
+          const type = activeType?.dataset.value || 'mvp';
+          const text = descEl.getAttribute(`data-${type}-${lang}`);
+          if (text) descEl.textContent = text;
+        }
+        const freeBadge = document.getElementById('free-badge');
+        if (freeBadge) {
+          const badgeText = freeBadge.getAttribute(`data-${lang}`);
+          if (badgeText) freeBadge.textContent = badgeText;
+        }
+      }
+
+      const savedLang = localStorage.getItem('handfive-lang') || 'es';
+      setLang(savedLang);
+
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.lang-toggle-btn');
+        if (btn) {
+          const lang = btn.getAttribute('data-lang-btn');
+          if (lang) setLang(lang);
+        }
+      });
+
+      (window as any).setLang = setLang;
+    </script>
+  </body>
+</html>

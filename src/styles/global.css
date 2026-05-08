@@ -99,7 +99,7 @@ body::before {
   object-fit: cover;
   opacity: 0.38;
   filter: saturate(0.9) brightness(0.5) contrast(1.08);
-  transform: scale(1.08);
+  transform: scale(1);
 }
 
 .site-background-overlay {
@@ -206,7 +206,7 @@ footer,
 
   .site-background-video {
     opacity: 0.28;
-    transform: scale(1.1);
+    transform: scale(1.04);
   }
 
   .site-background-grid {
@@ -315,8 +315,8 @@ footer,
 }
 
 @keyframes site-background-video-drift {
-  from { transform: translate3d(0, -1%, 0) scale(1.08); }
-  to { transform: translate3d(0, 8%, 0) scale(1.12); }
+  from { transform: translate3d(0, -1%, 0) scale(1); }
+  to { transform: translate3d(0, 6%, 0) scale(1.04); }
 }
 
 @keyframes site-background-grid-drift {

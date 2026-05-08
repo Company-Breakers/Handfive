@@ -41,7 +41,28 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="site-background" aria-hidden="true">
+      <div class="site-background-layer site-background-video-wrap">
+        <video
+          class="site-background-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="/grok-video-3ce7a56c-22a7-445a-b57c-23de1f8dcc76.webm" type="video/webm" />
+        </video>
+      </div>
+      <div class="site-background-layer site-background-overlay"></div>
+      <div class="site-background-layer site-background-grid"></div>
+      <div class="site-background-layer site-background-glow"></div>
+      <div class="site-background-layer site-background-vignette"></div>
+    </div>
+
+    <div class="page-shell">
+      <slot />
+    </div>
 
     <script>
       const observer = new IntersectionObserver(

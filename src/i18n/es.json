@@ -9,11 +9,11 @@
   },
   "hero": {
     "badge": "Disponibles para nuevos proyectos",
-    "title_1": "Orquestamos",
-    "title_2": "ecosistemas",
-    "title_3": "tecnológicos",
-    "subtitle": "5 arquitectos. Un ecosistema. Resultados enterprise.",
-    "description": "Somos un equipo compacto de arquitectos de software que diseña, construye y opera soluciones tecnológicas de alto impacto para negocios de todos los tamaños.",
+    "title_1": "Resolvemos",
+    "title_2": "problemas",
+    "title_3": "reales",
+    "subtitle": "con soluciones claras para tu negocio.",
+    "description": "Si hoy tu negocio depende de tareas manuales, procesos desordenados o sistemas que no acompañan el crecimiento, te ayudamos a ordenar, automatizar y construir una base tecnologica mas solida.",
     "cta_primary": "Hablemos",
     "cta_secondary": "Ver servicios"
   },
@@ -49,11 +49,11 @@
     "overline": "Nuestra filosofía",
     "title_1": "Liviana en costos.",
     "title_2": "Pesada en arquitectura.",
-    "description": "No somos una consultora tradicional con capas de management. Somos 5 arquitectos de software que trabajan directo con vos, eliminando el overhead corporativo y entregando soluciones de nivel enterprise.",
+    "description": "Reunimos experiencia en arquitectura, desarrollo, cloud e integraciones para trabajar directo con cada cliente, sin capas comerciales ni management innecesario.",
     "stats": {
-      "projects": "Proyectos entregados",
-      "experience": "Años de experiencia combinada",
-      "technologies": "Tecnologías dominadas"
+      "projects": "Arquitectos involucrados",
+      "experience": "Capas de management",
+      "technologies": "Equipo de punta a punta"
     }
   },
   "quiz": {

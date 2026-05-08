@@ -9,11 +9,11 @@
   },
   "hero": {
     "badge": "Available for new projects",
-    "title_1": "We orchestrate",
-    "title_2": "technology",
-    "title_3": "ecosystems",
-    "subtitle": "5 architects. One ecosystem. Enterprise results.",
-    "description": "We are a compact team of software architects who design, build and operate high-impact technology solutions for businesses of all sizes.",
+    "title_1": "We solve",
+    "title_2": "real",
+    "title_3": "problems",
+    "subtitle": "with clear solutions for your business.",
+    "description": "If your business still depends on manual work, messy processes or systems that do not support growth, we help you organize, automate and build a stronger technology foundation.",
     "cta_primary": "Let's talk",
     "cta_secondary": "View services"
   },
@@ -49,11 +49,11 @@
     "overline": "Our philosophy",
     "title_1": "Lightweight on costs.",
     "title_2": "Heavy on architecture.",
-    "description": "We're not a traditional consultancy with layers of management. We are 5 software architects who work directly with you, eliminating corporate overhead and delivering enterprise-grade solutions.",
+    "description": "We bring experience across architecture, development, cloud and integrations, and work directly with every client without sales layers or unnecessary management.",
     "stats": {
-      "projects": "Projects delivered",
-      "experience": "Years of combined experience",
-      "technologies": "Technologies mastered"
+      "projects": "Architects involved",
+      "experience": "Management layers",
+      "technologies": "End-to-end team"
     }
   },
   "quiz": {
